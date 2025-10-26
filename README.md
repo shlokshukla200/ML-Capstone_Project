@@ -1,73 +1,73 @@
-# 💼 Salary Prediction Using Random Forest — Machine Learning Capstone Project
+# 💼 Salary Prediction for Company X
 
-🧠 **A complete end-to-end machine learning project that predicts employee salary (Expected CTC) using Random Forest.**  
-The goal is to minimize human bias and promote fair salary decisions based on employee profiles and experience data.
-
----
-
-## 🧩 Problem Statement
-
-> **Design a predictive model that estimates the salary (Expected CTC) to be offered to an employee, based on their experience, education, and other professional attributes — ensuring salary equity and transparency.**
+## 🧠 Overview
+This capstone project aims to **predict the salary (Expected CTC)** to be offered to a potential employee using historical company data.  
+The goal is to **minimize human bias** and ensure **salary equity** for employees with similar experience and qualifications.
 
 ---
 
-## ⚙️ Libraries Used
-
-- 🧮 **NumPy** — numerical computation  
-- 📊 **Pandas** — data analysis and manipulation  
-- 🎨 **Matplotlib & Seaborn** — data visualization  
-- 🤖 **Scikit-learn** — machine learning algorithms and evaluation  
-- 📉 **Statsmodels** — statistical analysis (if used in EDA)  
+## 🎯 Problem Statement
+> Design a machine learning model that predicts the salary to be offered to an employee, using historical data, to minimize human bias and ensure salary fairness.
 
 ---
 
-## 📊 Workflow Overview
+## 📊 Project Workflow
 
-### 🔹 1. Data Loading
-- Loaded the dataset (`expected_ctc.csv`) directly from GitHub.  
-- Displayed info, shape, and column details.
-
-### 🔹 2. Data Cleaning
-- Dropped irrelevant columns (`IDX`, `Applicant_ID`, etc.).  
-- Filled missing **numerical** values with the **median** and **categorical** with the **mode**.  
-- Removed outliers using the **IQR method**.
-
-### 🔹 3. Exploratory Data Analysis (EDA)
-- 📈 **Univariate Analysis:** Countplots, KDE plots, and histograms.  
-- 🔄 **Bivariate Analysis:** Correlation heatmaps, scatterplots, boxplots, violinplots, and pairplots.  
-- Discovered strong relationships between experience, education, and expected CTC.
-
-### 🔹 4. Feature Engineering
-- Applied **One-Hot Encoding** to categorical features.  
-- Generated a clean, numeric dataset ready for machine learning.
-
-### 🔹 5. Model Building
-- Implemented a **Random Forest Classifier** and **Regressor** (for continuous salary prediction).  
-- Performed train-test split (80/20).  
-- Evaluated model using **Mean Squared Error (MSE)** and **Accuracy Score**.
+### 1. Data Understanding
+- **Dataset**: [expected_ctc.csv](https://raw.githubusercontent.com/shlokshukla200/Capstone-Project/refs/heads/main/expected_ctc.csv)  
+- Performed exploratory analysis of key features such as:
+  - `Department`, `Role`, `Industry`, `Education`, `Experience`, etc.
+- Identified numerical and categorical variables for further processing.
 
 ---
 
-## 🤖 Model Summary
-
-| Model Type              | Algorithm            | Metric Used         | Purpose                      |
-|--------------------------|---------------------|---------------------|------------------------------|
-| Random Forest Classifier | RandomForestClassifier | Accuracy Score      | Classification Testing       |
-| Random Forest Regressor  | RandomForestRegressor  | Mean Squared Error  | Salary Prediction (CTC)      |
-
----
-
-## 📈 Visualizations
-
-- 🔹 Boxplots and KDE plots for outlier and distribution analysis  
-- 🔹 Heatmaps to explore feature correlations  
-- 🔹 Violin and scatter plots to visualize relationships  
-- 🔹 Pairplots to show feature interactions holistically  
+### 2. Data Cleaning
+- Removed irrelevant columns: `IDX`, `Applicant_ID`
+- Handled missing values:
+  - **Numerical columns** → replaced with **median**
+  - **Categorical columns** → replaced with **mode**
+- Checked for duplicates and treated **outliers** using the **IQR (Interquartile Range)** method.
 
 ---
 
-## 🧠 Insights
+### 3. Exploratory Data Analysis (EDA)
+- Visualized feature distributions using:
+  - **Boxplots**
+  - **Histplots**
+  - **Violinplots**
+  - **KDE plots**
+- Created a **Correlation Heatmap** to identify relationships between features.
+- Performed **Bivariate Analysis**:
+  - `Total Experience` vs `Expected CTC`
+  - `Current CTC` vs `Expected CTC`
 
-- Salary (Expected CTC) increases with **experience** and **education level**  
-- **Appraisal ratings** and **current CTC** are strong predictors of expected salary  
-- Outlier handling and encoding significantly improve model performance  
+---
+
+### 4. Feature Engineering
+- Applied **Label Encoding** to convert categorical columns to numerical format.
+- Applied **Min-Max Scaling** to normalize numeric columns (excluding the target variable `Expected_CTC`).
+
+---
+
+### 5. Model Building
+- **Algorithm Used**: XGBoost Regressor  
+- **Train-Test Split**: 80% training / 20% testing  
+- **Evaluation Metric**: R² Score
+
+```python
+from xgboost import XGBRegressor
+
+model = XGBRegressor(
+    objective='reg:squarederror',
+    n_estimators=100,
+    learning_rate=0.1,
+    max_depth=5,
+    random_state=42
+)
+model.fit(X_train, y_train)
+6. Model Evaluation
+R² Score: Measures model accuracy.
+
+Residual Plot: Visualized errors between predicted and actual values.
+
+Actual vs Predicted Plot: Compared real vs predicted Expected CTC values.
