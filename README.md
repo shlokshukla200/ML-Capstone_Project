@@ -1,10 +1,30 @@
 # 💼 Salary Prediction for Company X
 
-## 🧠 Overview
-This capstone project aims to **predict the salary (Expected CTC)** to be offered to a potential employee using historical company data.  
-The goal is to **minimize human bias** and ensure **salary equity** for employees with similar experience and qualifications.
+[![Streamlit App](https://img.shields.io/badge/🚀_Live_Demo-Streamlit-blue?logo=streamlit)](https://salary-predictor-shlok.streamlit.app)
 
----
+### 🎯 Overview
+This project predicts the **Expected CTC (Salary)** of a candidate using **Machine Learning (XGBoost)**  
+based on their profile, experience, education, and performance data.
+
+### 🧠 Tech Stack
+- **Python 3.10+**
+- **Streamlit** – interactive web interface  
+- **Scikit-learn** – preprocessing, scaling, label encoding  
+- **XGBoost** – model training and prediction  
+- **Joblib** – model serialization  
+- **Pandas & NumPy** – data handling  
+- **Requests** – fetch model files from GitHub
+
+### ⚙️ Features
+✅ Modern Tech UI (dark theme)  
+✅ Multi-tab input layout: Profile | Job | Education | Performance | Predict  
+✅ Real-time CTC prediction  
+✅ Fully deployed on **Streamlit Cloud** (no setup needed)  
+✅ Works on mobile & desktop browsers
+
+### 🚀 Live Demo
+Click the badge below to try the app:  
+👉 [**Open on Streamlit**](https://salary-predictor-shlok.streamlit.app)
 
 ## 🎯 Problem Statement
 > Design a machine learning model that predicts the salary to be offered to an employee, using historical data, to minimize human bias and ensure salary fairness.
